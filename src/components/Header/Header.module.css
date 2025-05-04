@@ -1,3 +1,94 @@
 .header {
-	color: brown;
+	width: 100%;
+	height: 51px;
+	border-width: 1px;
+	display: flex;
+	flex-direction: row;
+	margin-top: 44px;
+	padding-bottom: 42px;
+	border-bottom: 1px solid #ededed;
+}
+.headerLogoText {
+	display: flex;
+	flex-direction: row;
+}
+.logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 35px;
+	height: 35px;
+	padding-top: 7px;
+	padding-bottom: 9px;
+}
+img {
+	width: 100%;
+	height: 100%;
+}
+.logoText {
+	width: 152px;
+	height: 51px;
+	top: 75px;
+	left: 146px;
+	margin: 0 40px 0 15px;
+}
+.logoName {
+	font-weight: 900;
+	color: #000000;
+	margin: 0;
+	line-height: 100%;
+	font-size: 25px;
+}
+.logoDescription {
+	font-weight: 400;
+	line-height: 100%;
+	letter-spacing: 0%;
+	color: #7b7b7b;
+	margin: 0;
+	font-size: 16px;
+	margin-top: 10px;
+}
+.headerForm {
+	position: relative;
+}
+
+input {
+	width: 764px;
+	height: 50px;
+	border: none;
+	outline: none;
+	background: #f9f9f9;
+	border-radius: 15px;
+	padding-left: 48px;
+	font-size: 16px;
+}
+.btnSearch {
+	width: 90px;
+	height: 50px;
+	top: 76px;
+	left: 1293px;
+	border-width: 1px;
+	margin-left: 15px;
+	margin-right: 40px;
+}
+.profile {
+	position: relative;
+	width: 110px;
+	height: 50px;
+	border-radius: 15px;
+	border: 1px solid #fe5f00;
+	margin-right: 15px;
+	margin-left: 40px;
+	color: #fe5f00;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 600;
+	padding-left: 16px;
+}
+.basket {
+	padding: 0;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #fe5f00;
+	border-radius: 15px;
 }
