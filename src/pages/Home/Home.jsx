@@ -1,11 +1,12 @@
-import Header from '../../components/Header/Header'
-import Sort from '../../components/Sort/Sort'
+import Header from '../../components/header/Header'
+import PizzaComponent from '../../components/pizzaComponent/PizzaComponent'
+import Sort from '../../components/sort/Sort'
 function Home() {
 	return (
 		<>
 			<Header />
 			<Sort />
-			{/* <Pizza /> */}
+			<PizzaComponent />
 		</>
 	)
 }

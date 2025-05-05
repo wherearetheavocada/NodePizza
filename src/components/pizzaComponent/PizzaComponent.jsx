@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPizzas } from '../../reducer/Pizza/PizzaSlice'
+import { fetchPizzas } from '../../slice/pizza/PizzaSlice'
 
 const PizzaComponent = () => {
 	const dispatch = useDispatch()
-	const { items, status, error } = useSelector(state => state.pizzas)
+	const { items, status, error } = useSelector(
+		state => state.reducer.pizzaReducer
+	)
 
 	useEffect(() => {
+		console.log('ddd')
 		dispatch(fetchPizzas())
 	}, [dispatch])
 
@@ -25,8 +28,8 @@ const PizzaComponent = () => {
 				{items.map(pizza => (
 					<li key={pizza.id}>
 						<h2>{pizza.name}</h2>
-						<p>Price: ${pizza.price}</p>
-						<p>Ingredients: {pizza.ingredients?.join(', ')}</p>
+						{/* <p>Price: ${pizza.price}</p>
+						<p>Ingredients: {pizza.ingredients?.join(', ')}</p> */}
 					</li>
 				))}
 			</ul>

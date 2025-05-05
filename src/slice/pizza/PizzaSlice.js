@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const API_URL = 'https://new-pizza-api.p.rapidapi.com/Pizzas'
+const API_URL = import.meta.env.VITE_API_URL
 const API_OPTIONS = {
 	headers: {
-		'x-rapidapi-key': 'c154095132msh1f19d4083626a87p13c3c6jsnd77af1decac3',
-		'x-rapidapi-host': 'new-pizza-api.p.rapidapi.com',
+		Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY,
+		apikey: import.meta.env.VITE_API_KEY,
 	},
 }
 
@@ -13,7 +13,7 @@ export const fetchPizzas = createAsyncThunk(
 	'pizzas/fetchPizzas',
 	async (_, { rejectWithValue }) => {
 		try {
-			const response = await axios.get(API_URL, API_OPTIONS)
+			const response = await axios.get(API_URL + '/pizzas', API_OPTIONS)
 			return response.data
 		} catch (error) {
 			return rejectWithValue(error.response.data)

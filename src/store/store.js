@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { reducer as basketReducer } from '../reducer/basket/basketSlice'
-import pizzaReducer from '../reducer/Pizza/PizzaSlice'
+import { reducer as basketReducer } from '../slice/basket/basketSlice'
+import pizzaReducer from '../slice/pizza/PizzaSlice'
 const reducers = combineReducers({
 	basketReducer,
 	pizzaReducer,
