@@ -23,13 +23,29 @@ const PizzaComponent = () => {
 
 	return (
 		<div>
-			<h1>Pizza Menu</h1>
 			<ul>
 				{items.map(pizza => (
 					<li key={pizza.id}>
 						<h2>{pizza.name}</h2>
-						{/* <p>Price: ${pizza.price}</p>
-						<p>Ingredients: {pizza.ingredients?.join(', ')}</p> */}
+						<p>description: {pizza.description}</p>
+						<p>Price: ${pizza.price}</p>
+						<h3>Ингредиенты:</h3>
+						{pizza.pizzas_ingredients?.length > 0 ? (
+							<p>
+								{(() => {
+									const ingredients = pizza.pizzas_ingredients.map(
+										item => item.ingredients.ingredient
+									)
+									const [first, ...rest] = ingredients
+									return [
+										first.charAt(0).toUpperCase() + first.slice(1),
+										...rest.map(ing => ing.toLowerCase()),
+									].join(', ')
+								})()}
+							</p>
+						) : (
+							<p>Ингредиенты не указаны</p>
+						)}
 					</li>
 				))}
 			</ul>
