@@ -28,6 +28,7 @@ const PizzaComponent = () => {
 					<li key={pizza.id}>
 						<h2>{pizza.name}</h2>
 						<p>description: {pizza.description}</p>
+						<img src={pizza.image_url} alt={pizza.name}></img>
 						<p>Price: ${pizza.price}</p>
 						<h3>Ингредиенты:</h3>
 						{pizza.pizzas_ingredients?.length > 0 ? (
