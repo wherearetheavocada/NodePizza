@@ -1,62 +1,149 @@
-import styles from './Filter.module'
+import { useState } from 'react'
+import styles from './Filter.module.css'
 
-export function Filter() {
+export default function Filter() {
+	const [isChecked, setIsChecked] = useState(false)
+
 	return (
 		<div className={styles.filter}>
 			<p className={styles.filterTitle}>Фильтрация</p>
 			<div className={styles.checkboxSize}>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Можно собирать</label>
-				</div>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Новинки</label>
-				</div>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Можно собирать</span>
+				</label>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Новинки</span>
+				</label>
 			</div>
-			<p className={styles.filterText}>Цена от и до</p>
-			<div className={styles.filterPriceInput}>
-				<input type='text'></input>
-				<input type='text'></input>
-			</div>
-			<p className={styles.filterText}>Ингредиенты:</p>
 			<div className={styles.checkboxSize}>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Сырный соус</label>
-				</div>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Моцарелла</label>
-				</div>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Чеснок</label>
-				</div>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Соленые огурчики</label>
-				</div>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Красный лук</label>
-				</div>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Томаты</label>
+				<p className={styles.filterText}>Цена от и до:</p>
+				<div className={styles.filterPriceInput}>
+					<input
+						className={styles.inputPrice}
+						type='text'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					></input>
+					<input
+						className={styles.inputPrice}
+						type='text'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					></input>
 				</div>
 			</div>
-			<p className={styles.filterText}>Тип теста:</p>
+
 			<div className={styles.checkboxSize}>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Традиционное</label>
-				</div>
-				<div className={styles.checkbox}>
-					<input type='checkbox' id='scales' name='scales' checked />
-					<label for='scales'>Тонкое</label>
-				</div>
+				<p className={styles.filterText}>Ингредиенты:</p>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Сливочный соус</span>
+				</label>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Моцарелла</span>
+				</label>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Пармезан</span>
+				</label>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Пепперони</span>
+				</label>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Моцарелла</span>
+				</label>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Курица</span>
+				</label>
 			</div>
+			<div className={styles.checkboxSize}>
+				<p className={styles.filterText}>Тип теста:</p>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Традиционное</span>
+				</label>
+				<label htmlFor='scales' className={styles.label}>
+					<input
+						type='checkbox'
+						className={styles.inputCheckbox}
+						id='scales'
+						name='scales'
+						checked={isChecked}
+						onChange={e => setIsChecked(e.target.checked)}
+					/>
+					<span>Тонкое</span>
+				</label>
+			</div>
+
 			<button className={styles.filterBtn}>Применить</button>
 		</div>
 	)

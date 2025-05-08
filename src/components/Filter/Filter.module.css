@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.filter {
+	margin-top: 36px;
+}
+.filterTitle {
+	width: 134px;
+	height: 30px;
+	font-weight: 700;
+	font-size: 22px;
+	color: #000000;
+}
+.checkboxSize {
+	margin-top: 30px;
+	padding-bottom: 25px;
+	border-bottom: 1px solid #f6f6f6;
+}
+.checkbox {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+}
+.label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+	color: #000000;
+	font-weight: 400;
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+.inputCheckbox {
+	width: 24px;
+	height: 24px;
+	/* background-color: #FE5F00; */
+	border-radius: 8px;
+}
+.filterText {
+	margin: 0;
+	width: 104px;
+	height: 22px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #000000;
+	margin-bottom: 15px;
+}
+.filterPriceInput {
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+}
+.inputPrice {
+	padding: 0;
+	width: 90px;
+	height: 40px;
+	background-color: white;
+	border-radius: 10px;
+	border: 1px solid #f1f1f1;
+}
+.filterBtn {
+	border: none;
+	width: 244px;
+	height: 50px;
+	border-radius: 18px;
+	background-color: #fe5f00;
+	color: white;
+}
