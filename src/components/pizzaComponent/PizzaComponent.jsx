@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPizzas } from '../../slice/pizza/PizzaSlice'
+import styles from './pizzaComponent.module.css'
 
 const PizzaComponent = () => {
 	const dispatch = useDispatch()
@@ -22,17 +23,20 @@ const PizzaComponent = () => {
 	}
 
 	return (
-		<div>
-			<ul>
-				{items.map(pizza => (
-					<li key={pizza.id}>
-						<h2>{pizza.name}</h2>
-						<p>description: {pizza.description}</p>
-						<img src={pizza.image_url} alt={pizza.name}></img>
-						<p>Price: ${pizza.price}</p>
-						<h3>Ингредиенты:</h3>
+		<div className={styles.pizzaContainer}>
+			{items.map(pizza => (
+				<div key={pizza.id} className={styles.pizzaCard}>
+					<img
+						src={pizza.image_url}
+						alt={pizza.name}
+						className={styles.pizzaImage}
+					/>
+					<h2 className={styles.pizzaName}>{pizza.name}</h2>
+					<p className={styles.description}>{pizza.description}</p>
+					<div className={styles.ingredientsSection}>
+						<h3 className={styles.ingredient}>Ингредиенты:</h3>
 						{pizza.pizzas_ingredients?.length > 0 ? (
-							<p>
+							<p className={styles.ingredientsList}>
 								{(() => {
 									const ingredients = pizza.pizzas_ingredients.map(
 										item => item.ingredients.ingredient
@@ -47,9 +51,13 @@ const PizzaComponent = () => {
 						) : (
 							<p>Ингредиенты не указаны</p>
 						)}
-					</li>
-				))}
-			</ul>
+					</div>
+					<div className={styles.basket}>
+						<p className={styles.price}>От {pizza.price} $</p>
+						<button className={styles.btnBasket}>+ Добавить</button>
+					</div>
+				</div>
+			))}
 		</div>
 	)
 }

@@ -2,7 +2,17 @@ import { useState } from 'react'
 import styles from './Filter.module.css'
 
 export default function Filter() {
-	const [isChecked, setIsChecked] = useState(false)
+	const [isCheckedNew, setIsCheckedNew] = useState(false)
+	const [isCheckedPriceFrom, setIsCheckedPriceFrom] = useState(false)
+	const [isCheckedPriceBefore, setIsCheckedPriceBefore] = useState(false)
+	const [isCheckedCreamySauce, setIsCheckedCreamySauce] = useState(false)
+	const [isCheckedMozzarella, setIsCheckedMozzarella] = useState(false)
+	const [isCheckedParmesan, setIsCheckedParmesan] = useState(false)
+	const [isCheckedPepperoni, setIsCheckedPepperoni] = useState(false)
+	const [isCheckedBacon, setIsCheckedBacon] = useState(false)
+	const [isCheckedСhicken, setIsCheckedСhicken] = useState(false)
+	const [isCheckedTraditional, setIsCheckedTraditional] = useState(false)
+	const [isCheckedSubtle, setIsCheckedSubtle] = useState(false)
 
 	return (
 		<div className={styles.filter}>
@@ -14,19 +24,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
-					/>
-					<span>Можно собирать</span>
-				</label>
-				<label htmlFor='scales' className={styles.label}>
-					<input
-						type='checkbox'
-						className={styles.inputCheckbox}
-						id='scales'
-						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedNew}
+						onChange={e => setIsCheckedNew(e.target.checked)}
 					/>
 					<span>Новинки</span>
 				</label>
@@ -37,14 +36,14 @@ export default function Filter() {
 					<input
 						className={styles.inputPrice}
 						type='text'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedPriceFrom}
+						onChange={e => setIsCheckedPriceFrom(e.target.checked)}
 					></input>
 					<input
 						className={styles.inputPrice}
 						type='text'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedPriceBefore}
+						onChange={e => setIsCheckedPriceBefore(e.target.checked)}
 					></input>
 				</div>
 			</div>
@@ -57,8 +56,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedCreamySauce}
+						onChange={e => setIsCheckedCreamySauce(e.target.checked)}
 					/>
 					<span>Сливочный соус</span>
 				</label>
@@ -68,8 +67,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedMozzarella}
+						onChange={e => setIsCheckedMozzarella(e.target.checked)}
 					/>
 					<span>Моцарелла</span>
 				</label>
@@ -79,8 +78,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedParmesan}
+						onChange={e => setIsCheckedParmesan(e.target.checked)}
 					/>
 					<span>Пармезан</span>
 				</label>
@@ -90,8 +89,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedBacon}
+						onChange={e => setIsCheckedBacon(e.target.checked)}
 					/>
 					<span>Пепперони</span>
 				</label>
@@ -101,10 +100,10 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedPepperoni}
+						onChange={e => setIsCheckedPepperoni(e.target.checked)}
 					/>
-					<span>Моцарелла</span>
+					<span>Бекон</span>
 				</label>
 				<label htmlFor='scales' className={styles.label}>
 					<input
@@ -112,8 +111,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedСhicken}
+						onChange={e => setIsCheckedСhicken(e.target.checked)}
 					/>
 					<span>Курица</span>
 				</label>
@@ -126,8 +125,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedTraditional}
+						onChange={e => setIsCheckedTraditional(e.target.checked)}
 					/>
 					<span>Традиционное</span>
 				</label>
@@ -137,8 +136,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isChecked}
-						onChange={e => setIsChecked(e.target.checked)}
+						checked={isCheckedSubtle}
+						onChange={e => setIsCheckedSubtle(e.target.checked)}
 					/>
 					<span>Тонкое</span>
 				</label>
