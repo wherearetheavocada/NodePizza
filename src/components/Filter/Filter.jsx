@@ -1,18 +1,23 @@
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	setPriceFilter,
+	toggleDoughTypeFilter,
+	toggleIngredientFilter,
+	toggleNewFilter,
+} from '../../slice/pizza/PizzaSlice'
 import styles from './Filter.module.css'
-
 export default function Filter() {
-	const [isCheckedNew, setIsCheckedNew] = useState(false)
-	const [isCheckedPriceFrom, setIsCheckedPriceFrom] = useState(false)
-	const [isCheckedPriceBefore, setIsCheckedPriceBefore] = useState(false)
-	const [isCheckedCreamySauce, setIsCheckedCreamySauce] = useState(false)
-	const [isCheckedMozzarella, setIsCheckedMozzarella] = useState(false)
-	const [isCheckedParmesan, setIsCheckedParmesan] = useState(false)
-	const [isCheckedPepperoni, setIsCheckedPepperoni] = useState(false)
-	const [isCheckedBacon, setIsCheckedBacon] = useState(false)
-	const [isCheckedСhicken, setIsCheckedСhicken] = useState(false)
-	const [isCheckedTraditional, setIsCheckedTraditional] = useState(false)
-	const [isCheckedSubtle, setIsCheckedSubtle] = useState(false)
+	const dispatch = useDispatch()
+	const { filters } = useSelector(state => state.reducer.pizzaReducer)
+
+	const handlePriceChange = (type, value) => {
+		const numValue = value === '' ? null : Number(value)
+		dispatch(setPriceFilter({ [type]: numValue }))
+	}
+
+	const handleIngredientToggle = ingredient => {
+		dispatch(toggleIngredientFilter(ingredient))
+	}
 
 	return (
 		<div className={styles.filter}>
@@ -24,8 +29,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedNew}
-						onChange={e => setIsCheckedNew(e.target.checked)}
+						checked={filters.showNew}
+						onChange={() => dispatch(toggleNewFilter())}
 					/>
 					<span>Новинки</span>
 				</label>
@@ -36,14 +41,16 @@ export default function Filter() {
 					<input
 						className={styles.inputPrice}
 						type='text'
-						checked={isCheckedPriceFrom}
-						onChange={e => setIsCheckedPriceFrom(e.target.checked)}
+						placeholder='0'
+						value={filters.price.min || ''}
+						onChange={e => handlePriceChange('min', e.target.value)}
 					></input>
 					<input
 						className={styles.inputPrice}
 						type='text'
-						checked={isCheckedPriceBefore}
-						onChange={e => setIsCheckedPriceBefore(e.target.checked)}
+						placeholder='0'
+						value={filters.price.max || ''}
+						onChange={e => handlePriceChange('max', e.target.value)}
 					></input>
 				</div>
 			</div>
@@ -56,8 +63,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedCreamySauce}
-						onChange={e => setIsCheckedCreamySauce(e.target.checked)}
+						checked={filters.ingredients.creamySauce}
+						onChange={() => handleIngredientToggle('creamySauce')}
 					/>
 					<span>Сливочный соус</span>
 				</label>
@@ -67,8 +74,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedMozzarella}
-						onChange={e => setIsCheckedMozzarella(e.target.checked)}
+						checked={filters.ingredients.mozzarella}
+						onChange={() => handleIngredientToggle('mozzarella')}
 					/>
 					<span>Моцарелла</span>
 				</label>
@@ -78,8 +85,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedParmesan}
-						onChange={e => setIsCheckedParmesan(e.target.checked)}
+						checked={filters.ingredients.parmesanCheese}
+						onChange={() => handleIngredientToggle('parmesanCheese')}
 					/>
 					<span>Пармезан</span>
 				</label>
@@ -89,8 +96,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedBacon}
-						onChange={e => setIsCheckedBacon(e.target.checked)}
+						checked={filters.ingredients.pepperoni}
+						onChange={() => handleIngredientToggle('pepperoni')}
 					/>
 					<span>Пепперони</span>
 				</label>
@@ -100,8 +107,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedPepperoni}
-						onChange={e => setIsCheckedPepperoni(e.target.checked)}
+						checked={filters.ingredients.bacon}
+						onChange={() => handleIngredientToggle('bacon')}
 					/>
 					<span>Бекон</span>
 				</label>
@@ -111,8 +118,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedСhicken}
-						onChange={e => setIsCheckedСhicken(e.target.checked)}
+						checked={filters.ingredients.chicken}
+						onChange={() => handleIngredientToggle('chicken')}
 					/>
 					<span>Курица</span>
 				</label>
@@ -125,8 +132,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedTraditional}
-						onChange={e => setIsCheckedTraditional(e.target.checked)}
+						checked={filters.doughType.traditional}
+						onChange={() => dispatch(toggleDoughTypeFilter('traditional'))}
 					/>
 					<span>Традиционное</span>
 				</label>
@@ -136,8 +143,8 @@ export default function Filter() {
 						className={styles.inputCheckbox}
 						id='scales'
 						name='scales'
-						checked={isCheckedSubtle}
-						onChange={e => setIsCheckedSubtle(e.target.checked)}
+						checked={filters.doughType.subtle}
+						onChange={() => dispatch(toggleDoughTypeFilter('subtle'))}
 					/>
 					<span>Тонкое</span>
 				</label>

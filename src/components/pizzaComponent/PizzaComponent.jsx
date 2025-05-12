@@ -1,16 +1,51 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPizzas } from '../../slice/pizza/PizzaSlice'
 import styles from './pizzaComponent.module.css'
 
 const PizzaComponent = () => {
 	const dispatch = useDispatch()
-	const { items, status, error } = useSelector(
+	const { items, status, error, filters } = useSelector(
 		state => state.reducer.pizzaReducer
 	)
 
+	const filteredPizzas = useMemo(() => {
+		return items.filter(pizza => {
+			// Фильтр по новинкам
+			if (filters.showNew && !pizza.is_new) return false
+
+			// Фильтр по цене
+			if (filters.price.min && pizza.price < filters.price.min) return false
+			if (filters.price.max && pizza.price > filters.price.max) return false
+
+			// Фильтр по ингредиентам
+			const activeIngredients = Object.entries(filters.ingredients)
+				.filter(([_, checked]) => checked)
+				.map(([ingredient]) => ingredient)
+
+			if (activeIngredients.length > 0) {
+				const pizzaIngredients =
+					pizza.pizzas_ingredients?.map(pi =>
+						pi.ingredients.ingredient.toLowerCase()
+					) || []
+
+				const hasAllIngredients = activeIngredients.every(ing => {
+					const ingName = ing === 'parmesanCheese' ? 'parmesan' : ing
+					return pizzaIngredients.includes(ingName.toLowerCase())
+				})
+				if (!hasAllIngredients) return false
+			}
+
+			// Фильтр по типу теста
+			if (filters.doughType.traditional && pizza.dough_type !== 'traditional')
+				return false
+			if (filters.doughType.subtle && pizza.dough_type !== 'thin') return false
+
+			return true
+		})
+	}, [items, filters])
+
 	useEffect(() => {
-		console.log('ddd')
 		dispatch(fetchPizzas())
 	}, [dispatch])
 
@@ -24,7 +59,7 @@ const PizzaComponent = () => {
 
 	return (
 		<div className={styles.pizzaContainer}>
-			{items.map(pizza => (
+			{filteredPizzas.map(pizza => (
 				<div key={pizza.id} className={styles.pizzaCard}>
 					<img
 						src={pizza.image_url}

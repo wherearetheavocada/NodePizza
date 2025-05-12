@@ -27,8 +27,67 @@ const pizzaSlice = createSlice({
 		items: [],
 		status: 'idle',
 		error: null,
+		filters: {
+			showNew: false,
+			ingredients: {
+				creamySauce: false,
+				mozzarella: false,
+				parmesanCheese: false,
+				pepperoni: false,
+				bacon: false,
+				chicken: false,
+			},
+			doughType: {
+				traditional: false,
+				subtle: false,
+			},
+			price: {
+				min: null,
+				max: null,
+			},
+		},
 	},
-	reducers: {},
+	reducers: {
+		toggleNewFilter(state) {
+			state.filters.showNew = !state.filters.showNew
+		},
+	},
+	toggleIngredientFilter: (state, action) => {
+		const ingredient = action.payload
+		state.filters.ingredients[ingredient] =
+			!state.filters.ingredients[ingredient]
+	},
+	toggleDoughTypeFilter(state, action) {
+		const doughType = action.payload
+		state.filters.doughType[doughType] = !state.filters.doughType[doughType]
+	},
+	setPriceFilter(state, action) {
+		state.filters.price = {
+			...state.filters.price,
+			...action.payload,
+		}
+	},
+	resetFilters(state) {
+		state.filters = {
+			showNew: false,
+			ingredients: {
+				creamySauce: false,
+				mozzarella: false,
+				parmesanCheese: false,
+				pepperoni: false,
+				bacon: false,
+				chicken: false,
+			},
+			doughType: {
+				traditional: false,
+				subtle: false,
+			},
+			price: {
+				min: null,
+				max: null,
+			},
+		}
+	},
 	extraReducers: builder => {
 		builder
 			.addCase(fetchPizzas.pending, state => {
@@ -45,4 +104,11 @@ const pizzaSlice = createSlice({
 	},
 })
 
+export const {
+	toggleNewFilter,
+	toggleIngredientFilter,
+	toggleDoughTypeFilter,
+	setPriceFilter,
+	resetFilters,
+} = pizzaSlice.actions
 export default pizzaSlice.reducer
